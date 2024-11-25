@@ -29,8 +29,8 @@ if(isset($_GET['product_id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megaman</title>
-
+    <title>Pikachu</title>
+    <link rel="icon" type="image/png" href="assets/imgs/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/99bc1cbf38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
@@ -40,8 +40,8 @@ if(isset($_GET['product_id'])){
     <!--Navigation Bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary fixed-top">
         <div class="container">
-          <img class="logo" src="assets/imgs/1.png"/>
-          <h2 class="brand">Megaman</h2>
+          <img class="logo" src="assets/imgs/logo.png"/>
+          <h2 class="brand">Pikachu</h2>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -65,7 +65,7 @@ if(isset($_GET['product_id'])){
               </li>
 
               <li class="nav-item ">
-                <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                 <a href="account.html"><i class="fa-solid fa-user"></i></a>             
               </li>
 
@@ -232,9 +232,9 @@ if(isset($_GET['product_id'])){
     <footer class="mt-5 py-5">
         <div class="row container mx-auto  pt-5">
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-                <img class="logo" src="assets/imgs/1.png"/>
+                <img class="logo" src="assets/imgs/logo.png"/>
                 <p class="pt-3">
-                    We provide the best services with the best prices
+                    Pika pika pika
                 </p>
             </div>
             <div class="footer-one col-lg-3 col-md-6 col-sm-12">
@@ -242,12 +242,11 @@ if(isset($_GET['product_id'])){
                     Feature
                 </h5>
                 <ul class="text-uppercase">
-                    <li><a href="#">men</a></li>
-                    <li><a href="#">women</a></li>
-                    <li><a href="#">boys</a></li>
-                    <li><a href="#">girls</a></li>
-                    <li><a href="#">new arrivals</a></li>
-                    <li><a href="#">clothes</a></li>
+                    <li><a href="#">Handling</a></li>
+                    <li><a href="#">Break</a></li>
+                    <li><a href="#">Mirror</a></li>
+                    <li><a href="#">Light</a></li>
+                    <li><a href="#">Motorbike</a></li>
                 </ul>
             </div>
 
@@ -272,11 +271,11 @@ if(isset($_GET['product_id'])){
             <div class="footer-one col-lg-3 col-md-6 col-sm-12 ">
                 <h5 class="pb-2">Instagram</h5>
                 <div class="row">
+                    <img src="assets/imgs/logo.png" class="img-fluid w-25 h-100 m-2"/>
                     <img src="assets/imgs/1.png" class="img-fluid w-25 h-100 m-2"/>
+                    <img src="assets/imgs/logo.png" class="img-fluid w-25 h-100 m-2"/>
                     <img src="assets/imgs/1.png" class="img-fluid w-25 h-100 m-2"/>
-                    <img src="assets/imgs/1.png" class="img-fluid w-25 h-100 m-2"/>
-                    <img src="assets/imgs/1.png" class="img-fluid w-25 h-100 m-2"/>
-                    <img src="assets/imgs/1.png" class="img-fluid w-25 h-100 m-2"/>
+                    <img src="assets/imgs/logo.png" class="img-fluid w-25 h-100 m-2"/>
                 </div>
             </div>
 
@@ -301,16 +300,5 @@ if(isset($_GET['product_id'])){
       </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script>
-
-        var mainImg = document.getElementById("mainImg");
-        var smallImg = document.getElementsByClassName("small-img");
-
-        for(let i=0; i<4; i++){
-            smallImg[i].onclick = function(){
-                mainImg.src = smallImg[i].src;
-            }
-        }
-    </script>
 </body>
 </html>
