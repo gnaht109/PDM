@@ -235,9 +235,12 @@ function calculateTotalCart(){
                 </tr>
             </table>
         </div>
-
+        
+        <!--Checkout Button-->
         <div class="checkout-container">
-            <button class="btn checkout-btn">Checkout</button>
+            <form method="POST" action="checkout.php">
+                <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout"> 
+            <form>
         </div>
 
     </section>

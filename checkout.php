@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+
+if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
+
+    //let user in
+
+
+    //send user to homepage
+}else{
+
+    header('location:index.php');
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +27,7 @@
     <script src="https://kit.fontawesome.com/99bc1cbf38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
+
 <body>
 
     <!--Navigation Bar-->
@@ -56,7 +75,7 @@
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="checkout-form">
+            <form id="checkout-form " method="POST" action="server/place_order.php">
                 <div class="form-group checkout-small-element">
                     <label>Name</label>
                     <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Name" required/>
@@ -83,7 +102,8 @@
                 </div>
 
                 <div class="form-group checkout-btn-container">
-                    <input type="submit" class="btn" id="checkout-btn" value="Checkout"/>
+                    <p>Total amount: $ <?php echo $_SESSION['total']; ?></p>
+                    <input type="submit" class="btn checkout-btn" id="checkout-btn" name="place_order" value="Place Order"/>
                 </div>
                
             </form>
@@ -163,4 +183,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
+
 </html>

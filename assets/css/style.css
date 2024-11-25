@@ -406,12 +406,23 @@ th:last-child{
 
 .checkout-container{
     display:flex;
+    align-items: center;
     justify-content: flex-end;
 }
 
 .checkout-btn{
     background-color: #fb774b;
     color:#fff;
+    border: none;
+    text-decoration: none;
+}
+
+.checkout-btn-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 /* Login */
