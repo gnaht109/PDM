@@ -1,15 +1,19 @@
 Tools:
-Database: Apache
-          phpMyAdmin
-          XAMPP
-          mySQL
+Database: 
++ Apache
++ phpMyAdmin
++ mySQL
++ XAMPP
           
-Frontend: HTML
-          CSS
-          JavaScript
+Frontend:
++ HTML
++ CSS
++ JavaScript
 
-Backend: PHP
+Backend: 
++ PHP
 
-Others: Bootstrap
-        Font Awesome
+Others: 
++ Bootstrap
++ Font Awesome
 
