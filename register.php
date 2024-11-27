@@ -4,6 +4,13 @@ session_start();
 
 include("server/connection.php");
 
+//if user has already registered, take user to account page
+if(isset($_SESSION['logged_in'])){
+    header('location: account.php');
+    exit;
+
+}
+
 if(isset($_POST['register'])){
 
     $name = $_POST['name'];
@@ -56,12 +63,6 @@ if(isset($_POST['register'])){
         }
 
     }
-
-//if user has already registered, take user to account page
-}else if(isset($_SESSION['logged_in'])){
-
-    header('location: account.php');
-    exit;
 
 }
 
@@ -127,7 +128,9 @@ if(isset($_POST['register'])){
         <div class="mx-auto container">
             <form id="register-form" method="POST" action="register.php">
                 <p style="color:red">
-                    <?php if(isset($_GET['error'])) {echo $_GET['error'];}?>
+                    <?php if(isset($_GET['error'])) {
+                        echo $_GET['error'];
+                        }?>
                 </p>
                 <div class="form-group">
                     <label>Name</label>
