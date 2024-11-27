@@ -28,8 +28,11 @@ if(isset($_POST['place_order'])){
 
     $order_id = $stmt->insert_id;
 
+    //2. issue new order and store order infomation in database
+    $order_id = $stmt->insert_id;
 
-    //2. get product from cart (from session) 
+
+    //3. get product from cart (from session) 
     
     foreach($_SESSION['cart'] as $key => $value){
 
@@ -44,6 +47,7 @@ if(isset($_POST['place_order'])){
                         VALUES(?,?,?,?,?,?,?,?)
         ");
 
+        //4. store each single item in order item database
         $stmt1->bind_param('iissiiis',$order_id,$product_id,$product_name,$product_image,$product_price,$product_quantity,$user_id,$order_date);
 
         $stmt1->execute();
@@ -51,16 +55,16 @@ if(isset($_POST['place_order'])){
     }
 
     
-    //3. issue new order and store order infomation in database
 
 
-    //4. store each single item in order item database
+    //5. remove everything from cart --> delay until payment is done
+    
 
-
-    //5. remove everything from cart
 
 
     //6. inform user whether everything is fine or there is a problem
+    header('location:../payment.php?order_status=order place successfully');
+    
 
 
 }
