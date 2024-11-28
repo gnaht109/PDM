@@ -139,7 +139,7 @@ function calculateTotalCart(){
               </li>
 
               <li class="nav-item ">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item ">
@@ -152,7 +152,7 @@ function calculateTotalCart(){
 
               <li class="nav-item ">
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="account.html"><i class="fa-solid fa-user"></i></a>             
+                <a href="account.php"><i class="fa-solid fa-user"></i></a>             
               </li>
 
             </ul>

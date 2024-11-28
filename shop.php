@@ -1,3 +1,15 @@
+<?php
+
+include('server/connection.php');
+
+$stmt = $conn->prepare("SELECT*FROM products");
+
+$stmt-> execute();
+
+$products = $stmt->get_result();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +18,36 @@
     <title>Pikachu</title>
     <link rel="icon" type="image/png" href="assets/imgs/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <script src="https://kit.fontawesome.com/99bc1cbf38.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="assets/css/style.css"/>
+
+    <style>
+        .product img{
+            width: 100%;
+            height: 300px;
+            box-sizing: border-box;
+            object-fit: cover;
+        }
+        
+        .pagination{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+        }
+
+        .pagination a{
+            color: coral;
+        }   
+
+        .pagination li:hover a{
+            color: #fff;
+            background-color: coral;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -48,184 +88,124 @@
           </div>
         </div>
       </nav>
-    
 
-    <!--Home-->
-    <section id="home">
-        <div class="container">
-            <h5>
-                NEW ARRIVALS
-            </h5>
-            <h1>
-                <span>
-                    Best Prices
-                </span>
-                this season
-            </h1>
-            <p>
-                Eshop offer the best product for the most affordable prices
-            </p>
-            <button>
-                Shop now
-            </button>
-
-        </div>
-      </section>
-
-
-    <!--Brand-->
-    <section id="brand" class="container">
-        <div class="row">
-            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/imgs/brand3.png"/>
-            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/imgs/brand2.png"/>
-            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/imgs/brand1.png"/>
-            <img class="img-fluid col-lg-3 col-md-6 col-sm-12" src="assets/imgs/brand4.png"/>
-        </div>
-      </section>
-
-
-    <!--New-->
-    <section id="new" class="w-100">
-        <div class="row p-0 m-0">
-
-            <!--One-->
-            <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/1.png"/>
-                <div class="details">
-                    <h2>
-                        Description
-                    </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
-                </div>
-            </div>
-            <!--Two-->
-            <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/2.png"/>
-                <div class="details">
-                    <h2>
-                        Description
-                    </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
-                </div>
-            </div>
-            <!--Three-->
-            <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/3.png"/>
-                <div class="details">
-                    <h2>
-                        Description
-                    </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
-                </div>
-            </div>
-
-        </div>
-      </section>
-
-
-    <!--Featured-->
-    <section id="featured" class="my-5 pd-5">
-        <div class="container text-center mt-5 py-5">
-            <h3>Our Featured</h3>
+    <!--Search-->
+    <section id="search" class="my-5 py-5 ms-2">
+        <div class="container mt-5 pt-5">
+            <p>Search Products</p>
             <hr>
-            <p>Here you can check out our featured </p>
         </div>
-        <div class="row mx-auto container-fluid">
 
-            <!--Product 1-->
-            <?php include 'server/get_featured_products.php' ;?>
-
-            <?php while($row = $featured_products->fetch_assoc()){ ?>
-
-                
-                <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                    <img class="img-fluid mb-3" src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image']; ?>"/>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+        <form>
+            <div class="row mx-auto container">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Category</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="category_one">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Mirrors
+                        </label>
                     </div>
-                    <h5 class="p-name">
-                        <?php echo $row['product_name']; ?>
-                    </h5>
-                    <h4 class="p-price">
-                        $<?php echo $row['product_price']; ?>
-                    </h4>
-                    <a href="single_product.php?product_id=<?php echo $row['product_id'];?>"><button class="buy-btn">
-                        Buy now
-                    </button></a>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="category_two" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Lights
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="category_two" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Handles
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="category_two" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Breaks
+                        </label>
+                    </div>
+
                 </div>
-
-            <?php } ?>
-                
             </div>
-      </section>
-      
-    <!--Banner-->
-    <section id="banner" class="my-5 pd-5">
-        <div class="container">
-            <h4>
-                MID SEASON'S SALE
-            </h4>
-            <h1>
-                Autumn Collection
-                <br>
-                Up to 30% OFF
-            </h1>
-            <button class="text-uppercase">
-                Shop now
-            </button>
-        </div>
-      </section>
 
-    <!--Clothes-->
-    <section id="featured" class="my-5">
+            <div class="row mx-auto container mt-5">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Price</p>
+                    <input type="range" class="form-range w-50" min="1" max="1000" id="customRange2">
+                    <div class="w-50">
+                        <span style="float:left;">1</span>
+                        <span style="float:right;">1000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group my-3 mx-3">
+                <input type="submit" name="search" value="Search" class="btn btn-primary">
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!--Shop-->
+    <section id="shop" class="my-5 py-5">
         <div class="container text-center mt-5 py-5">
-            <h3>Motorbike</h3>
+            <h3>Our products</h3>
             <hr>
-            <p>Here you can check out our brand new motorbike</p>
+            <p>Here you can check out our products </p>
         </div>
-        <div class="row mx-auto container-fluid">
+        <div class="row mx-auto container">
 
+        <?php while($row = $products->fetch_assoc()){ ?>
 
             <!--Product 1-->
-            <?php include 'server/get_motorbikes.php' ;?>
-
-            <?php while($row = $motorbikes_products->fetch_assoc()){ ?>
-
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image']; ?>"/>
+            <div onclick="window.location.href='single_product.php';"class="product text-center col-lg-3 col-md-4 col-sm-12">
+                <img class="img-fluid mb-3" src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image'] ?>"/>
+                
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
+
                 </div>
                 <h5 class="p-name">
                     <?php echo $row['product_name']; ?>
                 </h5>
+
                 <h4 class="p-price">
                     $<?php echo $row['product_price']; ?>
                 </h4>
-                <a href="single_product.php?product_id=<?php echo $row['product_id'];?>"><button class="buy-btn">
-                        Buy now
-                    </button></a>
+                
+                <a class="btn buy-btn" href="<?php echo "single_product.php?product_id=".$row['product_id']; ?>"> 
+                    Buy Now
+                </a>
+                
             </div>
-
-            <?php } ?>
             
-        </div>
-      </section>
+        <?php } ?>
 
+            <nav aria-label="Page navigation example">
+                <ul class="pagination mt-5">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+
+
+        </div>
+
+
+      </section>
+    
     <!--Footer-->
     <footer class="mt-5 py-5">
         <div class="row container mx-auto  pt-5">

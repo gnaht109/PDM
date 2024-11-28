@@ -34,6 +34,9 @@ if(isset($_GET['product_id'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/99bc1cbf38.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css"/>
+    <style>
+        
+    </style>
 </head>
 <body>
     
@@ -53,7 +56,7 @@ if(isset($_GET['product_id'])){
               </li>
 
               <li class="nav-item ">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item ">
@@ -66,7 +69,7 @@ if(isset($_GET['product_id'])){
 
               <li class="nav-item ">
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="account.html"><i class="fa-solid fa-user"></i></a>             
+                <a href="account.php"><i class="fa-solid fa-user"></i></a>             
               </li>
 
             </ul>
@@ -85,24 +88,21 @@ if(isset($_GET['product_id'])){
                 <img class="img-fluid w-100 pb-1" src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image']; ?>" id="mainImg"/>
                 <div class="small-img-group">
                     <div class="small-img-col">
-                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image1']; ?>" width="100%" class="small-img"/>
+                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image1']; ?>" width="100%" height="150px" class="small-img"/>
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image2']; ?>" width="100%" class="small-img"/>
+                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image2']; ?>" width="100%" height="150px" class="small-img"/>
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image3']; ?>" width="100%" class="small-img"/>
+                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image3']; ?>" width="100%" height="150px" class="small-img"/>
                     </div>
                     <div class="small-img-col">
-                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image4']; ?>" width="100%" class="small-img"/>
+                        <img src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image4']; ?>" width="100%" height="150px" class="small-img"/>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <h6>
-                    <?php echo $row['product_category']; ?>
-                </h6>
                 <h3 class="py-4">
                     <?php echo $row['product_name']; ?>
                 </h3>
@@ -123,7 +123,7 @@ if(isset($_GET['product_id'])){
                 </form>
 
                 <h4 class="mt-5 mb-5">
-                    Product details
+                    Product details: 
                 </h4>
                 <span>
                     <?php echo $row['product_description']; ?>
@@ -300,5 +300,17 @@ if(isset($_GET['product_id'])){
       </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <script>
+        var mainImg = document.getElementById("mainImg")
+        var smallImg = document.getElementsByClassName("small-img");
+
+        for(let i=0; i<4; i++){
+            smallImg[i].onclick = function(){
+            mainImg.src=smallImg[i].src;
+            }
+        }
+    </script>
+
 </body>
 </html>

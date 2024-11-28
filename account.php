@@ -100,7 +100,7 @@ if(isset($_SESSION['logged_in'])){
               </li>
 
               <li class="nav-item ">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
 
               <li class="nav-item ">
@@ -113,7 +113,7 @@ if(isset($_SESSION['logged_in'])){
 
               <li class="nav-item ">
                 <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a href="account.html"><i class="fa-solid fa-user"></i></a>             
+                <a href="account.php"><i class="fa-solid fa-user"></i></a>             
               </li>
 
             </ul>
@@ -227,8 +227,8 @@ if(isset($_SESSION['logged_in'])){
                 </td>
 
                 <td>
-                    <span>
-                        <?php
+                    <span>$
+                        <?php 
                             echo $row['order_cost'];
                         ?>
                     </span>
@@ -251,8 +251,10 @@ if(isset($_SESSION['logged_in'])){
                 </td>  
 
                 <td>
-                    <form>
-                        <input class ="btn order-details-btn" type="submit" value="details"/>
+                    <form method="POST" action="order_details.php">
+                        <input type="hidden" value="<?php echo $row['order_status'];?>" name="order_status"/>
+                        <input type="hidden" value="<?php echo $row['order_id'];?>" name="order_id"/>
+                        <input class ="btn order-details-btn" name="order_details_btn" type="submit" value="details"/>
                     </form>
                 </td>
                 
