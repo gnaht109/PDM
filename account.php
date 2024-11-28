@@ -54,6 +54,19 @@ if(isset($_POST['change_password'])){
 
 }
 
+//get orders
+if(isset($_SESSION['logged_in'])){
+
+    $user_id = $_SESSION['user_id'];
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id =? ");
+    
+    $stmt->bind_param('i',$user_id);
+
+    $stmt-> execute();
+    
+    $orders = $stmt->get_result();
+
+}
 
 
 ?>
@@ -185,7 +198,7 @@ if(isset($_POST['change_password'])){
     </section>
     
     <!--Orders-->
-    <section id="orders" class="cart container my-5 py-3">
+    <section id="orders" class="orders container my-5 py-3">
         <div class="container mt-2">
             <h3 class="font-weight-bold text-center">Your Orders</h3>
             <hr class="mx-auto">
@@ -193,25 +206,59 @@ if(isset($_POST['change_password'])){
 
         <table class="mt-5 pt-5">
             <tr>
-                <th>Product</th>
-                <th>Date</th>
+                <th>Order ID</th>
+                <th>Order cost</th>
+                <th>Order status</th>
+                <th>Order date</th>
+                <th>Order detail</th>
             </tr>
 
+            <?php while($row = $orders->fetch_assoc() ){ ?>
+            
             <tr>
                 <td>
-                    <div class="product-info">
-                        <img src="assets/imgs/1.png"/>
-                        <div>
-                            <p class="mt-3">Product's name</p>
-                        </div>
-                    </div>
+                    <span>
+                        <p class="mt-3">
+                            <?php
+                                echo $row['order_id'];
+                            ?>
+                        </p>
+                    </span>
                 </td>
 
                 <td>
-                    <span>dd/mm/yy</span>
-                </tr>    
+                    <span>
+                        <?php
+                            echo $row['order_cost'];
+                        ?>
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        <?php
+                            echo $row['order_status'];
+                        ?>
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        <?php
+                            echo $row['order_date'];
+                        ?>
+                    </span>
+                </td>  
+
+                <td>
+                    <form>
+                        <input class ="btn order-details-btn" type="submit" value="details"/>
+                    </form>
+                </td>
                 
             </tr>
+
+            <?php } ?>
 
         </table>
 

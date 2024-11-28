@@ -506,7 +506,7 @@ th:last-child{
     flex-wrap: wrap;
 }
 
-.order th{
+.orders th{
     padding: 5px 10px;
     color:#fff;
     background-color: #fb774b;
@@ -514,11 +514,18 @@ th:last-child{
 
 }
 
-.order td{
+.orders td{
     padding: 10px 20px;
+    text-align: center;
+
 }
 
-.order td img{
+.orders .order-details-btn{
+    color:#fff;
+    background-color: #fb774b;
+}
+
+.orders td img{
     width: 80px;
     height: 80px;
     margin-right: 10px;
