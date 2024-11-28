@@ -163,7 +163,7 @@ $products = $stmt->get_result();
         <?php while($row = $products->fetch_assoc()){ ?>
 
             <!--Product 1-->
-            <div onclick="window.location.href='single_product.php';"class="product text-center col-lg-3 col-md-4 col-sm-12">
+            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
                 <img class="img-fluid mb-3" src="assets/imgs/Products/<?php echo $row['product_category']; ?>/<?php echo $row['product_image'] ?>"/>
                 
                 <div class="star">
