@@ -69,7 +69,9 @@ if(isset($_POST['place_order'])){
     
 
 
-    //5. remove everything from cart --> delay until payment is done
+    // Step 5: Remove all items from the cart (after the order is placed)
+    unset($_SESSION['cart']);  // Clear the entire cart
+    $_SESSION['total'] = 0;    // Optionally reset the total
     
     $_SESSION['order_id'] = $order_id;
 

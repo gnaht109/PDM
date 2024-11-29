@@ -9,6 +9,11 @@ session_start();
 
 include('server/connection.php');
 
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
 if(isset($_POST['order_details_btn']) && isset($_POST['order_id'])){
 
     $order_id = $_POST['order_id'];
@@ -114,6 +119,9 @@ function calculateTotalOrderPrice($order_details){
                 <input type="hidden" name="order_total_price" value="<?php echo $order_total_price;?>" />
                 <input type="hidden" name="order_status" value="<?php echo $order_status ?>" />
                 <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Pay Now"/>
+            </form>
+            <form style="float: right;margin-right:5px;" method="POST" action="server/delete_order.php">
+                <input type="submit" name="order_delete" class="btn btn-danger" value="Delete"/>
             </form>
         <?php } ?>
 

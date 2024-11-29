@@ -2,6 +2,11 @@
 
 session_start();
 
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
 if(isset($_POST['add_to_cart'])){
     //if user has already added a product to cart
     if(isset($_SESSION['cart'])){

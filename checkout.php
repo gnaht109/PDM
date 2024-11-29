@@ -2,6 +2,11 @@
 
 session_start();
 
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
 if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
 
     //let user in

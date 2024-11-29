@@ -4,6 +4,11 @@ session_start();
 
 include('server/connection.php');
 
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $localDateTime = date('Y-m-d H:i:s');
