@@ -59,11 +59,19 @@ if(isset($_POST['login_btn'])){
         </div>
         <div class="mx-auto container">
             <form id="login-form" method="POST" action="login.php" >
+
                 <p style="color:red" class="text-center">
                     <?php if(isset($_GET['error'])){
                         echo $_GET['error'];
                     }?>
                 </p>
+
+                <p style="color:red" class="text-center">
+                    <?php if(isset($_GET['message'])){
+                        echo $_GET['message'];
+                    }?>
+                </p>
+
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" class="form-control" id="login-email" name="email" placeholder="Email" required/>

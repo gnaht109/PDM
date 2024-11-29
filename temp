@@ -1,0 +1,32 @@
+if (isset($_POST["payment-submit-btn"])) {
+
+    var_dump($_POST);
+
+    $user_id = $_SESSION['user_id'];
+    $order_id = $_POST['order_id'];
+    $payment_cost = $_POST['order_total_price'];;
+    $card_number = $_POST['card_number'];
+    $card_holder = $_POST['card_holder'];
+    $exp_year = $_POST['exp_year'];
+    $exp_month = $_POST['exp_month'];
+    $CVV = $_POST['CVV'];
+
+
+    $stmt = $conn -> prepare("INSERT INTO payments (order_id,user_id,payment_cost,payment_date,card_number,card_holder,exp_year,exp_month,CVV) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+    );
+    $stmt->bind_param("iiissssss", $order_id, $user_id, $payment_cost, $localDateTime, $card_number, $card_holder, $exp_year, $exp_month, $CVV);
+    // Execute the query
+
+    if ($stmt->execute()) {
+        $payment_id = $stmt->insert_id;
+
+        $_SESSION["paymentStatus"] = true;
+        header("Location: payment.php");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    } else {
+    echo "Invalid data provided.";
+    }

@@ -10,7 +10,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
     //send user to homepage
 }else{
 
-    header('location:index.php');
+    header('location:cart.php?message:There is nothing to check out');
     
 }
 
@@ -54,6 +54,7 @@ if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
 
                 <div class="form-group checkout-btn-container">
                     <p>Total amount: $ <?php echo $_SESSION['total']; ?></p>
+                    <input type="hidden" name="order_total_price" value="<?php echo $_SESSION['total']; ?>" />
                     <input type="submit" class="btn checkout-btn" id="checkout-btn" name="place_order" value="Place Order"/>
                 </div>
                

@@ -4,7 +4,13 @@ session_start();
 
 include('connection.php');
 
+//if user is not logged in
+if(!isset($_SESSION['logged_in'])){
+    header('location: ../login.php?message= Please login to place an order');
+    exit;
+}
 
+//if user is logged in already
 if(isset($_POST['place_order'])){
 
     //1. get user info and store it in database
@@ -24,9 +30,14 @@ if(isset($_POST['place_order'])){
 
     $stmt->bind_param('isiisss',$order_cost,$order_status,$user_id,$phone,$city,$address,$order_date);
 
-    $stmt->execute();
+    $stmt_status = $stmt->execute();
 
-    $order_id = $stmt->insert_id;
+    if(!$stmt_status){
+        header('location: index.php');
+        exit;
+    }
+
+
 
     //2. issue new order and store order infomation in database
     $order_id = $stmt->insert_id;
@@ -60,11 +71,10 @@ if(isset($_POST['place_order'])){
 
     //5. remove everything from cart --> delay until payment is done
     
-
-
+    $_SESSION['order_id'] = $order_id;
 
     //6. inform user whether everything is fine or there is a problem
-    header('location:../payment.php?order_status=order place successfully');
+    header('location:../account.php?order_status=order place successfully');
     
 
 

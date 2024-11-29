@@ -115,8 +115,10 @@ function calculateTotalCart(){
     
     <!--Cart-->
     <section class="cart container my-5 py-5">
+        
         <div class="container mt-5">
             <h2 class="font-weight-bold">Your Cart</h2>
+            
             <hr>
         </div>
 
@@ -127,6 +129,8 @@ function calculateTotalCart(){
                 <th>Quantity</th>
                 <th>Subtotal</th>
             </tr>
+
+            <?php if(isset($_SESSION['cart'])){ ?>
 
             <?php foreach($_SESSION['cart'] as $key => $value){ ?>
 
@@ -173,7 +177,11 @@ function calculateTotalCart(){
 
             <?php } ?>
 
+            <?php } ?>
+
         </table>
+
+
 
         <div class="cart-total">
             <table>
@@ -181,19 +189,25 @@ function calculateTotalCart(){
                     <td>
                         Total
                     </td>
-                    <td>
-                        $<?php echo $_SESSION['total']?>
-                    </td>
+                    
+                    <?php if(isset($_SESSION['total'])){ ?>
+                        <td>
+                            $<?php echo $_SESSION['total']?>
+                        </td>
+                    <?php } ?>
                 </tr>
             </table>
         </div>
         
         <!--Checkout Button-->
         <div class="checkout-container">
+            
             <form method="POST" action="checkout.php">
                 <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout"> 
             <form>
         </div>
+
+
 
     </section>
 
