@@ -118,10 +118,10 @@ function calculateTotalOrderPrice($order_details){
                 <input type="hidden" name="order_id" value="<?php echo $order_id;?>"/>
                 <input type="hidden" name="order_total_price" value="<?php echo $order_total_price;?>" />
                 <input type="hidden" name="order_status" value="<?php echo $order_status ?>" />
-                <input type="submit" name="order_pay_btn" class="btn btn-primary" value="Pay Now"/>
+                <input type="submit" name="order_pay_btn" class="btn order_detail_submit_btn" value="Pay Now"/>
             </form>
             <form style="float: right;margin-right:5px;" method="POST" action="server/delete_order.php">
-                <input type="submit" name="order_delete" class="btn btn-danger" value="Delete"/>
+                <input type="submit" name="order_delete" class="btn order_delete_btn" value="Cancel"/>
             </form>
         <?php } ?>
 

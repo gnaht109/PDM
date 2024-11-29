@@ -68,6 +68,20 @@ if(isset($_SESSION['logged_in'])){
 
 }
 
+//get booking
+if(isset($_SESSION['logged_in'])){
+
+    $user_id = $_SESSION['user_id'];
+    $stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id =? ");
+    
+    $stmt->bind_param('i',$user_id);
+
+    $stmt-> execute();
+    
+    $bookings = $stmt->get_result();
+
+}
+
 
 ?>
 
@@ -78,6 +92,13 @@ if(isset($_SESSION['logged_in'])){
     <section class="my-5 py-5">
         <div class="row container mx-auto">
             <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
+                <p class="text-center" style="color:green">    
+                    <?php 
+                        if(isset($_GET['booking_message'])){
+                            echo $_GET['booking_message'];
+                        }
+                    ?>
+                </p>
                 <p class="text-center" style="color:green">    
                     <?php 
                         if(isset($_GET['payment_message'])){
@@ -214,6 +235,92 @@ if(isset($_SESSION['logged_in'])){
                         <input type="hidden" value="<?php echo $row['order_status'];?>" name="order_status"/>
                         <input type="hidden" value="<?php echo $row['order_id'];?>" name="order_id"/>
                         <input class ="btn order-details-btn" name="order_details_btn" type="submit" value="details"/>
+                    </form>
+                </td>
+                
+            </tr>
+
+            <?php } ?>
+
+        </table>
+
+    </section>
+
+    <!--Bookings-->
+    <section id="orders" class="orders container my-5 py-3">
+        <div class="container mt-2">
+            <h3 class="font-weight-bold text-center">Your Booking</h3>
+            <hr class="mx-auto">
+        </div>
+
+        <table class="mt-5 pt-5">
+            <tr>
+                <th>Booking ID</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Plate</th>
+                <th>Service</th>
+                <th>Date</th>
+            </tr>
+
+            <?php while($row = $bookings->fetch_assoc() ){ ?>
+            
+            <tr>
+                <td>
+                    <span>
+                        <p class="mt-3">
+                            <?php
+                                echo $row['booking_id'];
+                            ?>
+                        </p>
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        <?php 
+                            echo $row['booking_phone'];
+                        ?>
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        <?php
+                            echo $row['booking_status'];
+                        ?>
+                    </span>
+                </td>
+
+                <td>
+                    <span>
+                        <?php
+                            echo $row['booking_plate'];
+                        ?>
+                    </span>
+                </td>  
+                
+                <td>
+                    <span>
+                        <?php
+                            echo $row['booking_service'];
+                        ?>
+                    </span>
+                </td>  
+
+                <td>
+                    <span>
+                        <?php
+                            echo $row['booking_date'];
+                        ?>
+                    </span>
+                </td>  
+
+                <td>
+                    <!--remove button-->
+                    <form method="POST" action="server/cancel_booking.php"> 
+                        <input type="hidden" name="booking_id" value="<?php echo $row['booking_id']; ?>">
+                        <input type="submit" name="cancel_booking" class="remove-btn" value="cancel">
                     </form>
                 </td>
                 

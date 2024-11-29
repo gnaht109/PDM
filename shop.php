@@ -8,9 +8,9 @@ if(isset($_POST['search'])){
     $category = $_POST['category'];
     $price = $_POST['price'];
 
-    $stmt = $conn->prepare("SELECT*FROM products where product_category = ? AND product_price <= ?");
+    $stmt = $conn->prepare("SELECT*FROM products where product_category = ? ");
 
-    $stmt->bind_param("si",$category,$price);
+    $stmt->bind_param("s",$category);
 
     $stmt-> execute();
     
@@ -38,9 +38,7 @@ if(isset($_POST['search'])){
 
     <!--Search-->
     <section id="search" class="my-5 py-5 ms-2">
-        <div class="container mt-5 pt-5">
-            <p>Search Products</p>
-            <hr>
+        <div class="container mt-5 py-5">
         </div>
 
         <form action="shop.php" method="POST">
@@ -81,19 +79,8 @@ if(isset($_POST['search'])){
                 </div>
             </div>
 
-            <div class="row mx-auto container mt-5">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <p>Price</p>
-                    <input type="range" class="form-range w-50" name="price" value="100" min="1" max="1000" id="customRange2">
-                    <div class="w-50">
-                        <span style="float:left;">1</span>
-                        <span style="float:right;">1000</span>
-                    </div>
-                </div>
-            </div>
-
             <div class="form-group my-3 mx-3">
-                <input type="submit" name="search" value="Search" class="btn btn-primary">
+                <input type="submit" name="search" value="Search" class="btn book-btn">
             </div>
 
         </form>
@@ -139,16 +126,6 @@ if(isset($_POST['search'])){
             </div>
             
         <?php } ?>
-
-            <nav aria-label="Page navigation example">
-                <ul class="pagination mt-5">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
 
 
         </div>

@@ -39,26 +39,20 @@ $_SESSION["user_email"] = $user_email;
 
     <section class="my-5 py-5">
         <div class="container text-center mt-3 pt-5">
-            <h1> <?php echo $_SESSION['total_price'];?> </h1>
-            <h1> <?php echo $_SESSION['order_id'];?> </h1>
-            <h1> <?php echo $user_id;?> </h1>
 
-
-
-            <h2 class="form-weight-bold">Payment</h2>
+            <h2 class="form-weight-bold">Billing Address</h2>
             <hr class = "mx-auto">
         </div>
         <div class ="mx-auto container text-center">
 
             <!-- If STMT 1 -->
-            <?php if(isset($_SESSION['total']) && $_SESSION['total'] != 0) { ?>
+            <?php if(isset($_SESSION['total_price']) && $_SESSION['total_price'] != 0) { ?>
                 <?php $order_id = $_POST['order_id'] ?? "";?>
                 <div class="container mt-5">
                     <form id="payment-form" method="POST" action="server/payment_completed.php">
                         <div class="row">
                             <!-- First Column -->
                             <div class="col-md-6">
-                                <h3 class="title">Billing Address</h3>
                                 <div class="form-group">
                                     <label>Full Name</label>
                                     <input type="text" class="form-control" id="payment-name" name="name" placeholder="Pham Nguyen Viet Thang" readonly value="<?php echo $_SESSION["user_name"] ?>"/>
@@ -79,11 +73,6 @@ $_SESSION["user_email"] = $user_email;
 
                             <!-- Second Column -->
                             <div class="col-md-6">
-                                <h3 class="title">Payment</h3>
-                                <div class="form-group">
-                                    <span>Card Accepted:</span>
-                                    <img src="assets/imgs/imgcards.png" alt="">
-                                </div>
                                 <div class="form-group">
                                     <label>Card Owner:</label>
                                     <input class="form-control" name="card_holder" type="text" placeholder="CARD HOLDER"required >
@@ -111,7 +100,7 @@ $_SESSION["user_email"] = $user_email;
                         </div>
 
 
-                        <button class="btn btn-primary" type="submit" name="payment-submit-btn" value="Pay Now">
+                        <button class="btn payment-submit-btn" type="submit" name="payment-submit-btn" value="Pay Now">
                             Pay now
                         </button>
                     </form>
@@ -137,7 +126,7 @@ $_SESSION["user_email"] = $user_email;
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="text" class="form-control" id="payment-date" name="date" readonly value="<?php echo "$".$price ?>" />
+                                    <input type="text" class="form-control" id="payment-date" name="date" readonly value="<?php echo "$".$payment_cost ?>" />
                                 </div>
                                 <div class="form-group">
                                     <label>Date</label>

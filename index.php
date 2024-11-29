@@ -41,38 +41,44 @@
 
             <!--One-->
             <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/1.png"/>
+                <img class="img-fluid" src="assets/imgs/maintaining.jpg"/>
                 <div class="details">
                     <h2>
-                        Description
+                        Maintaining
                     </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
+                    <a href="booking.php">
+                        <button class="text-uppercase" >
+                            Book now
+                        </button>
+                    </a>
                 </div>
             </div>
             <!--Two-->
             <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/2.png"/>
+                <img class="img-fluid" src="assets/imgs/oilchanging.jpg"/>
                 <div class="details">
                     <h2>
-                        Description
+                        Oil changing
                     </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
+                    <a href="booking.php">
+                        <button class="text-uppercase" >
+                            Book now
+                        </button>
+                    </a>
                 </div>
             </div>
             <!--Three-->
             <div class="one col-lg-4 col-md-12 col-sm-12">
-                <img class="img-fluid" src="assets/imgs/3.png"/>
+                <img class="img-fluid" src="assets/imgs/washing.jpg"/>
                 <div class="details">
                     <h2>
-                        Description
+                        Washing
                     </h2>
-                    <button class="text-uppercase">
-                        Shop now
-                    </button>
+                    <a href="booking.php">
+                        <button class="text-uppercase" >
+                            Book now
+                        </button>
+                    </a>
                 </div>
             </div>
 

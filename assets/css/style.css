@@ -153,10 +153,16 @@ button:hover{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: block; /* Ensures there's no space below the image */
+    margin: 0; /* Removes any default margin */
+    padding: 0; /* Removes any padding */
 }
 
 #new .one{
     position: relative;
+    margin: 0; /* Removes margin around the container */
+    padding: 0; /* Removes padding around the container */
+    overflow: hidden; /* Ensures no overflow outside the container */
 }
 
 #new .one .details{
@@ -464,13 +470,13 @@ th:last-child{
     width: 50%;
     margin: 5px auto;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
     border-top:1px solid #fb774b;
 }
 
 #login-form input{
     width: 50%;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 
 #login-form #login-btn{
@@ -487,13 +493,13 @@ th:last-child{
     width: 50%;
     margin: 5px auto;
     text-align: center;
-    padding: 20px;
+    padding: 5px;
     border-top:1px solid #fb774b;
 }
 
 #register-form input{
     width: 50%;
-    margin: 5px auto;
+    margin: 10px auto;
 }
 
 #register-form #register-btn{
@@ -595,4 +601,85 @@ th:last-child{
 
 #search{
     float:left;
+}
+
+.book-btn{
+    background-color: #fb774b;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+}
+
+.book-btn:hover{
+    background-color: #222222;
+    color: #fff;
+
+}
+
+.order_delete_btn{
+    color: #fb774b;
+    text-decoration: none;
+    font-size: 14px;
+    background-color: #fff;
+    border:none;
+    width:100%
+}
+
+.order_delete_btn:hover{
+    color: #222;
+
+}
+
+.order_detail_submit_btn{
+    background-color: #fb774b;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+}
+
+.order_detail_submit_btn:hover{
+    background-color: #222222;
+    color:#fff;
+
+}
+
+/* Make the row layout use two even columns */
+#payment-form .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Each column should take equal space and have space between items */
+#payment-form .col-md-6 {
+    flex: 1;
+    padding: 0 15px;
+}
+
+/* Form group to add spacing between fields */
+#payment-form .form-group {
+    margin-bottom: 15px;
+}
+
+/* Form control with basic styling */
+#payment-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-submit-btn{
+    margin-top: 10px ;
+    background-color: #fb774b;
+    color:#fff;
+    border: none;
+    text-decoration: none;
+}
+
+.payment-submit-btn:hover{
+    background-color: #222222;
+    color:#fff;
+
 }
