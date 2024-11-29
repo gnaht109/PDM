@@ -205,6 +205,22 @@ button:hover{
     object-fit: cover;
 }
 
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.pagination a{
+    color: coral;
+}   
+
+.pagination li:hover a{
+    color: #fff;
+    background-color: coral;
+}
+
 .product:hover img{
     opacity: 0.7;
 }
