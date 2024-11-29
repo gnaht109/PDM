@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS orders(
     user_phone int(11) NOT NULL,
     user_city varchar(255) NOT NULL,
     user_address varchar(255) NOT NULL,
-    order_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+    order_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS order_items(
@@ -40,7 +41,9 @@ CREATE TABLE IF NOT EXISTS order_items(
     product_price decimal(6,2) NOT NULL,
     product_quantity int(11) NOT NULL,
     user_id int(11) NOT NULL,
-    order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(products_id)
 );
 
 CREATE TABLE IF NOT EXISTS payments(
@@ -53,7 +56,9 @@ CREATE TABLE IF NOT EXISTS payments(
     card_holder varchar(255) NOT NULL,
     exp_year varchar(4) NOT NULL,
     exp_month varchar(2) NOT NULL,
-    CVV varchar(3) NOT NULL
+    CVV varchar(3) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(parent_column),
+    FOREIGN KEY (user_id) REFERENCES users(parent_column)
 );
 
 CREATE TABLE IF NOT EXISTS bookings(
@@ -65,5 +70,6 @@ CREATE TABLE IF NOT EXISTS bookings(
     booking_plate varchar(255) NOT NULL,
 	booking_date datetime NOT NULL,
     booking_service varchar(255) NOT NULL,
-    booking_status varchar(255) NOT NULL 
+    booking_status varchar(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
