@@ -14,7 +14,8 @@ if(isset($_POST['login_btn'])){
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $stmt = $conn->prepare("SELECT user_id,user_name,user_email,user_password FROM users WHERE user_email = ? AND user_password = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT user_id,user_name,user_email,user_password FROM users WHERE user_email = ? 
+                            AND user_password = ? LIMIT 1");
 
     $stmt->bind_param('ss',$email,$password);
 
@@ -33,7 +34,7 @@ if(isset($_POST['login_btn'])){
             header('location:account.php?loggin_success=logged in successfully');
 
         }else{
-            header('location: login.php?error=could not verify your account');
+            header('location: login.php?error=incorrect email or password');
 
         }
 

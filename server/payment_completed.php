@@ -28,10 +28,12 @@ if (isset($_POST["payment-submit-btn"]) && isset($_SESSION['order_id'])) {
 
     $stmt->execute();
 
-    $stmt1 = $conn -> prepare("INSERT INTO payments (order_id,user_id,payment_cost,payment_date,card_number,card_holder,exp_year,exp_month,CVV) 
+    $stmt1 = $conn -> prepare("INSERT INTO payments (order_id,user_id,payment_cost,payment_date,
+                                                card_number,card_holder,exp_year,exp_month,CVV) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
-    $stmt1->bind_param("iiissssss", $order_id, $user_id, $payment_cost, $localDateTime, $card_number, $card_holder, $exp_year, $exp_month, $CVV);    
+    $stmt1->bind_param("iiissssss", $order_id, $user_id, $payment_cost, $localDateTime, 
+                                $card_number, $card_holder, $exp_year, $exp_month, $CVV);    
 
     $stmt1->execute();
 

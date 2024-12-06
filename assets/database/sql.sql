@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS order_items(
     user_id int(11) NOT NULL,
     order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES products(products_id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
 CREATE TABLE IF NOT EXISTS payments(
@@ -57,8 +57,8 @@ CREATE TABLE IF NOT EXISTS payments(
     exp_year varchar(4) NOT NULL,
     exp_month varchar(2) NOT NULL,
     CVV varchar(3) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(parent_column),
-    FOREIGN KEY (user_id) REFERENCES users(parent_column)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS bookings(
